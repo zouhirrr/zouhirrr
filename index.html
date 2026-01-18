@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مكتب ناصر بن محمد المانع للعقارات</title>
+    <style>
+        :root {
+            --primary-color: #0c1a33; /* كحلي ملكي */
+            --accent-color: #c5a059;  /* ذهبي مطفي */
+            --bg-color: #f4f4f4;
+            --text-color: #ffffff;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+        .header {
+            background-color: var(--primary-color);
+            padding: 40px 20px;
+            border-radius: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        .logo {
+            width: 100px;
+            height: 100px;
+            background-color: var(--accent-color);
+            border-radius: 50%;
+            margin: 0 auto 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 40px;
+            color: var(--primary-color);
+        }
+        h1 { font-size: 1.4rem; color: var(--text-color); margin: 10px 0; }
+        p { font-size: 0.9rem; color: #aab8c2; margin-bottom: 0; }
+        
+        .link-card {
+            background-color: white;
+            color: var(--primary-color);
+            text-decoration: none;
+            display: block;
+            padding: 18px;
+            margin-bottom: 15px;
+            border-radius: 15px;
+            font-weight: 600;
+            transition: 0.3s;
+            border: 1px solid #eee;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+        .link-card:active { transform: scale(0.98); background-color: #f9f9f9; }
+        .whatsapp { border-right: 8px solid #25D366; }
+        .call { border-right: 8px solid var(--primary-color); }
+        .map { border-right: 8px solid var(--accent-color); }
+        
+        .footer-text { margin-top: 40px; font-size: 0.8rem; color: #888; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <div class="logo">ن</div> <h1>مكتب ناصر بن محمد المانع للعقارات</h1>
+        <p>خياركم الأول للثقة العقارية</p>
+    </div>
+
+    <a href="https://wa.me/9665XXXXXXXX" class="link-card whatsapp">التواصل عبر الواتساب</a>
+    <a href="tel:+9665XXXXXXXX" class="link-card call">اتصال هاتفي مباشر</a>
+    <a href="https://goo.gl/maps/XXXXXX" class="link-card map">موقع المكتب (خرائط جوجل)</a>
+    <a href="#" class="link-card">كتالوج العروض العقارية</a>
+    
+    <div class="footer-text">
+        حقوق الطبع محفوظة © 2026
+    </div>
+</div>
+
+</body>
+</html>
