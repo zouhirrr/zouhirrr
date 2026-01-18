@@ -3,84 +3,191 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>مركز الطبي | حجز موعد</title>
+    <title>البطاقة الرقمية الاحترافية</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
+        /* تعريف الألوان والخلفية */
         :root {
-            --medical-blue: #2a9d8f; /* لون مريح للعين */
-            --bg-light: #f8f9fa;
-            --text-dark: #264653;
+            --primary-accent: #c5a059; /* ذهبي ملكي */
+            --glass-bg: rgba(255, 255, 255, 0.1);
+            --glass-border: rgba(255, 255, 255, 0.2);
         }
-        body { font-family: 'Segoe UI', Tahoma, sans-serif; background-color: var(--bg-light); margin: 0; padding: 20px; color: var(--text-dark); text-align: center; }
-        .container { max-width: 450px; margin: auto; background: white; padding: 30px; border-radius: 25px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
-        .logo { width: 80px; margin-bottom: 15px; }
-        h1 { font-size: 20px; margin-bottom: 5px; }
-        p { font-size: 14px; color: #666; margin-bottom: 25px; }
-        
-        .form-group { margin-bottom: 15px; text-align: right; }
-        input, select { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 10px; box-sizing: border-box; font-size: 14px; }
-        
-        .submit-btn { width: 100%; padding: 15px; background-color: var(--medical-blue); color: white; border: none; border-radius: 12px; font-weight: bold; cursor: pointer; transition: 0.3s; }
-        .submit-btn:hover { background-color: #21867a; }
-        
-        .contact-fast { display: flex; justify-content: space-around; margin-top: 25px; border-top: 1px solid #eee; padding-top: 20px; }
-        .contact-fast a { text-decoration: none; color: var(--medical-blue); font-size: 20px; }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Roboto, sans-serif;
+            /* خلفية متدرجة عصرية جداً */
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
+            background-attachment: fixed;
+            display: flex;
+            justify-content: center;
+            min-height: 100vh;
+            color: white;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 420px;
+            padding: 40px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* صورة الملف الشخصي المضيئة */
+        .profile-wrapper {
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .profile-img {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--primary-accent);
+            box-shadow: 0 0 20px rgba(197, 160, 89, 0.3);
+        }
+
+        h1 { font-size: 24px; margin: 10px 0 5px; font-weight: 800; }
+        .subtitle { color: #94a3b8; font-size: 15px; margin-bottom: 35px; }
+
+        /* حاوية الروابط */
+        .links-stack {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        /* تصميم الزر الزجاجي (Glassmorphism) */
+        .link-item {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            padding: 18px 25px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: white;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .link-item i {
+            font-size: 22px;
+            margin-left: 15px;
+            width: 30px;
+            color: var(--primary-accent);
+        }
+
+        .link-item span {
+            font-size: 16px;
+            font-weight: 600;
+            flex-grow: 1;
+        }
+
+        /* تأثير السهم الصغير جهة اليسار */
+        .link-item::after {
+            content: "\f104";
+            font-family: "Font Awesome 5 Free";
+            font-weight: 900;
+            opacity: 0.3;
+            transition: 0.3s;
+        }
+
+        /* تأثير التحويم (Hover) */
+        .link-item:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: scale(1.03);
+            border-color: var(--primary-accent);
+        }
+
+        .link-item:hover::after {
+            opacity: 1;
+            transform: translateX(-5px);
+        }
+
+        /* الأيقونات الاجتماعية في الأسفل */
+        .social-icons {
+            margin-top: 40px;
+            display: flex;
+            gap: 20px;
+        }
+
+        .social-icons a {
+            color: white;
+            font-size: 24px;
+            opacity: 0.6;
+            transition: 0.3s;
+        }
+
+        .social-icons a:hover {
+            opacity: 1;
+            color: var(--primary-accent);
+            transform: translateY(-3px);
+        }
+
+        .footer {
+            margin-top: 60px;
+            font-size: 11px;
+            color: #64748b;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <img src="logo.png" alt="Logo" class="logo"> <h1>مجمع العيادات المتخصص</h1>
-    <p>احجز موعدك الآن وسنقوم بالتواصل معك لتأكيده</p>
+    <div class="profile-wrapper">
+        <img src="https://ui-avatars.com/api/?name=Manea+Office&background=c5a059&color=fff&size=128" alt="Logo" class="profile-img">
+    </div>
 
-    <form id="appointmentForm">
-        <div class="form-group">
-            <input type="text" name="data[Name]" placeholder="الاسم الكامل" required>
-        </div>
-        <div class="form-group">
-            <input type="tel" name="data[Phone]" placeholder="رقم الجوال" required>
-        </div>
-        <div class="form-group">
-            <select name="data[Service]" required>
-                <option value="">اختر القسم...</option>
-                <option value="أسنان">قسم الأسنان</option>
-                <option value="جلدية">قسم الجلدية</option>
-                <option value="ليزر">قسم الليزر</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <select name="data[Time]" required>
-                <option value="">الفترة المفضلة...</option>
-                <option value="صباحاً">الصباح (9 - 12)</option>
-                <option value="مساءً">المساء (4 - 9)</option>
-            </select>
-        </div>
-        <button type="submit" id="btnSubmit" class="submit-btn">إرسال طلب الحجز</button>
-    </form>
+    <h1>مكتب ناصر المانع</h1>
+    <p class="subtitle">حلول عقارية ذكية ومعتمدة</p>
 
-    <div id="msg" style="display:none; color: green; margin-top: 15px;">✅ تم استلام طلبك، انتظر اتصالنا!</div>
+    <div class="links-stack">
+        <a href="tel:+9665XXXXXXXX" class="link-item">
+            <i class="fas fa-phone-alt"></i>
+            <span>اتصل بنا مباشرة</span>
+        </a>
 
-    <div class="contact-fast">
-        <a href="tel:+9665XXXXXXXX"><i class="fas fa-phone"></i></a>
-        <a href="https://wa.me/9665XXXXXXXX"><i class="fab fa-whatsapp"></i></a>
-        <a href="#"><i class="fas fa-map-marker-alt"></i></a>
+        <a href="https://wa.me/9665XXXXXXXX" class="link-item">
+            <i class="fab fa-whatsapp"></i>
+            <span>تواصل عبر واتساب</span>
+        </a>
+
+        <a href="#" class="link-item">
+            <i class="fas fa-map-marked-alt"></i>
+            <span>موقعنا على الخريطة</span>
+        </a>
+
+        <a href="contact.vcf" download class="link-item">
+            <i class="fas fa-user-plus"></i>
+            <span>حفظ جهة الاتصال</span>
+        </a>
+
+        <a href="#" class="link-item">
+            <i class="fas fa-external-link-alt"></i>
+            <span>تصفح أحدث العروض</span>
+        </a>
+    </div>
+
+    <div class="social-icons">
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-snapchat-ghost"></i></a>
+    </div>
+
+    <div class="footer">
+        Powered by Digital Business Card
     </div>
 </div>
-
-<script>
-    var form = document.getElementById('appointmentForm');
-    form.addEventListener("submit", e => {
-      e.preventDefault();
-      document.getElementById('btnSubmit').innerText = "جاري الحجز...";
-      fetch('رابط_API_الخاص_بك_هنا', {
-          method : 'POST',
-          body: new FormData(document.getElementById("appointmentForm")),
-      }).then(res => res.json()).then(() => {
-          form.style.display = 'none';
-          document.getElementById('msg').style.display = 'block';
-      });
-    });
-</script>
 
 </body>
 </html>
