@@ -3,149 +3,84 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>مكتب ناصر المانع للعقارات | بطاقة التواصل الذكية</title>
+    <title>مركز الطبي | حجز موعد</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root {
-            --main-bg: #0f172a; /* خلفية كحلية غامقة جداً مودرن */
-            --card-bg: #1e293b; /* لون البطاقة */
-            --accent: #c5a059;  /* ذهبي عقاري */
-            --text-primary: #ffffff;
-            --text-secondary: #94a3b8;
+            --medical-blue: #2a9d8f; /* لون مريح للعين */
+            --bg-light: #f8f9fa;
+            --text-dark: #264653;
         }
-
-        body {
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            background-color: var(--main-bg);
-            margin: 0;
-            display: flex;
-            justify-content: center;
-            align-items: flex-start;
-            min-height: 100vh;
-            color: var(--text-primary);
-        }
-
-        .wrapper {
-            width: 100%;
-            max-width: 450px;
-            padding: 40px 20px;
-            text-align: center;
-        }
-
-        /* تصميم الهيدر */
-        .profile-section {
-            margin-bottom: 35px;
-        }
-
-        .profile-img {
-            width: 110px;
-            height: 110px;
-            border-radius: 50%;
-            border: 3px solid var(--accent);
-            padding: 5px;
-            margin-bottom: 15px;
-            object-fit: cover;
-        }
-
-        h1 { font-size: 22px; margin: 10px 0; font-weight: 700; }
-        .bio { color: var(--text-secondary); font-size: 14px; line-height: 1.6; }
-
-        /* تصميم الأزرار */
-        .links-container {
-            display: grid;
-            gap: 15px;
-        }
-
-        .btn-link {
-            background-color: var(--card-bg);
-            color: var(--text-primary);
-            text-decoration: none;
-            padding: 16px 20px;
-            border-radius: 16px;
-            display: flex;
-            align-items: center;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            position: relative;
-        }
-
-        .btn-link i {
-            font-size: 20px;
-            margin-left: 15px;
-            width: 30px;
-            color: var(--accent);
-        }
-
-        .btn-link:hover {
-            transform: translateY(-3px);
-            background-color: #2d3748;
-            border-color: var(--accent);
-        }
-
-        /* زر مميز للواتساب */
-        .btn-whatsapp {
-            background: linear-gradient(45deg, #25d366, #128c7e);
-            border: none;
-        }
-        .btn-whatsapp i { color: white; }
-
-        /* الفوتر */
-        .footer {
-            margin-top: 50px;
-            font-size: 12px;
-            color: var(--text-secondary);
-            letter-spacing: 1px;
-        }
-
-        /* أنيميشن خفيف عند الفتح */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .wrapper { animation: fadeIn 0.8s ease-out; }
+        body { font-family: 'Segoe UI', Tahoma, sans-serif; background-color: var(--bg-light); margin: 0; padding: 20px; color: var(--text-dark); text-align: center; }
+        .container { max-width: 450px; margin: auto; background: white; padding: 30px; border-radius: 25px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+        .logo { width: 80px; margin-bottom: 15px; }
+        h1 { font-size: 20px; margin-bottom: 5px; }
+        p { font-size: 14px; color: #666; margin-bottom: 25px; }
+        
+        .form-group { margin-bottom: 15px; text-align: right; }
+        input, select { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 10px; box-sizing: border-box; font-size: 14px; }
+        
+        .submit-btn { width: 100%; padding: 15px; background-color: var(--medical-blue); color: white; border: none; border-radius: 12px; font-weight: bold; cursor: pointer; transition: 0.3s; }
+        .submit-btn:hover { background-color: #21867a; }
+        
+        .contact-fast { display: flex; justify-content: space-around; margin-top: 25px; border-top: 1px solid #eee; padding-top: 20px; }
+        .contact-fast a { text-decoration: none; color: var(--medical-blue); font-size: 20px; }
     </style>
 </head>
 <body>
 
-<div class="wrapper">
-    <div class="profile-section">
-        <img src="https://ui-avatars.com/api/?name=Naser+Almanea&background=c5a059&color=fff&size=128" alt="Logo" class="profile-img">
-        <h1>مكتب ناصر بن محمد المانع</h1>
-        <p class="bio">خبيرك الموثوق في السوق العقاري الخليجي<br>بيع - شراء - تأجير - إدارة أملاك</p>
-    </div>
+<div class="container">
+    <img src="logo.png" alt="Logo" class="logo"> <h1>مجمع العيادات المتخصص</h1>
+    <p>احجز موعدك الآن وسنقوم بالتواصل معك لتأكيده</p>
 
-    <div class="links-container">
-        <a href="https://wa.me/9665XXXXXXXX" class="btn-link btn-whatsapp">
-            <i class="fab fa-whatsapp"></i>
-            <span>تواصل مباشرة عبر واتساب</span>
-        </a>
+    <form id="appointmentForm">
+        <div class="form-group">
+            <input type="text" name="data[Name]" placeholder="الاسم الكامل" required>
+        </div>
+        <div class="form-group">
+            <input type="tel" name="data[Phone]" placeholder="رقم الجوال" required>
+        </div>
+        <div class="form-group">
+            <select name="data[Service]" required>
+                <option value="">اختر القسم...</option>
+                <option value="أسنان">قسم الأسنان</option>
+                <option value="جلدية">قسم الجلدية</option>
+                <option value="ليزر">قسم الليزر</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <select name="data[Time]" required>
+                <option value="">الفترة المفضلة...</option>
+                <option value="صباحاً">الصباح (9 - 12)</option>
+                <option value="مساءً">المساء (4 - 9)</option>
+            </select>
+        </div>
+        <button type="submit" id="btnSubmit" class="submit-btn">إرسال طلب الحجز</button>
+    </form>
 
-        <a href="tel:+9665XXXXXXXX" class="btn-link">
-            <i class="fas fa-phone-alt"></i>
-            <span>اتصال هاتفي سريع</span>
-        </a>
+    <div id="msg" style="display:none; color: green; margin-top: 15px;">✅ تم استلام طلبك، انتظر اتصالنا!</div>
 
-        <a href="https://maps.google.com" class="btn-link">
-            <i class="fas fa-map-marker-alt"></i>
-            <span>موقع المكتب على الخريطة</span>
-        </a>
-
-        <a href="#" class="btn-link">
-            <i class="fas fa-home"></i>
-            <span>تصفح أحدث العروض العقارية</span>
-        </a>
-        
-        <a href="#" class="btn-link">
-            <i class="fas fa-user-plus"></i>
-            <span>حفظ جهة الاتصال في الجوال</span>
-        </a>
-    </div>
-
-    <div class="footer">
-        حقوق الطبع محفوظة © 2026 | مكتب المانع
+    <div class="contact-fast">
+        <a href="tel:+9665XXXXXXXX"><i class="fas fa-phone"></i></a>
+        <a href="https://wa.me/9665XXXXXXXX"><i class="fab fa-whatsapp"></i></a>
+        <a href="#"><i class="fas fa-map-marker-alt"></i></a>
     </div>
 </div>
+
+<script>
+    var form = document.getElementById('appointmentForm');
+    form.addEventListener("submit", e => {
+      e.preventDefault();
+      document.getElementById('btnSubmit').innerText = "جاري الحجز...";
+      fetch('رابط_API_الخاص_بك_هنا', {
+          method : 'POST',
+          body: new FormData(document.getElementById("appointmentForm")),
+      }).then(res => res.json()).then(() => {
+          form.style.display = 'none';
+          document.getElementById('msg').style.display = 'block';
+      });
+    });
+</script>
 
 </body>
 </html>
