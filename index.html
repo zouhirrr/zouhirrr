@@ -3,275 +3,93 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>بطاقة التواصل الذكية | مكتب ناصر المانع</title>
-    
+    <title>مكتب ناصر المانع - نظام الحجز الذكي</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    
     <style>
-        /* إعدادات التصميم العام */
-        :root {
-            --gold: #c5a059;
-            --dark-bg: #0f172a;
-            --glass: rgba(255, 255, 255, 0.1);
-            --glass-border: rgba(255, 255, 255, 0.2);
-        }
+        /* التنسيق الزجاجي الفخم */
+        :root { --gold: #c5a059; --dark: #0f172a; }
+        body { background: radial-gradient(circle at top, #1e293b, #0f172a); font-family: 'Segoe UI', sans-serif; margin: 0; color: white; display: flex; justify-content: center; padding: 20px; }
+        .container { width: 100%; max-width: 400px; text-align: center; }
+        .profile-img { width: 100px; height: 100px; border-radius: 50%; border: 3px solid var(--gold); margin-bottom: 10px; background: white; padding: 5px; }
+        
+        /* حاوية الخدمات الديناميكية */
+        .links-grid { display: flex; flex-direction: column; gap: 12px; margin: 20px 0; }
+        .btn-link { background: rgba(255,255,255,0.05); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.1); padding: 15px; border-radius: 15px; display: flex; align-items: center; color: white; text-decoration: none; transition: 0.3s; }
+        .btn-link:hover { background: rgba(255,255,255,0.15); border-color: var(--gold); transform: translateY(-2px); }
+        .btn-link i { font-size: 20px; margin-left: 15px; color: var(--gold); }
 
-        body {
-            background: radial-gradient(circle at top, #1e293b, #0f172a);
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            display: flex;
-            justify-content: center;
-            min-height: 100vh;
-            color: white;
-            padding: 20px;
-        }
-
-        .container {
-            width: 100%;
-            max-width: 400px;
-            text-align: center;
-        }
-
-        /* الهوية البصرية */
-        .profile-section {
-            margin-bottom: 30px;
-        }
-
-        .profile-img {
-            width: 110px;
-            height: 110px;
-            border-radius: 50%;
-            border: 3px solid var(--gold);
-            padding: 5px;
-            background: white;
-            box-shadow: 0 0 20px rgba(197, 160, 89, 0.3);
-        }
-
-        h1 { font-size: 24px; margin: 15px 0 5px; }
-        .subtitle { color: #94a3b8; font-size: 15px; }
-
-        /* الأزرار السريعة */
-        .links-grid {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            margin-bottom: 30px;
-        }
-
-        .btn-link {
-            background: var(--glass);
-            backdrop-filter: blur(10px);
-            border: 1px solid var(--glass-border);
-            padding: 15px 20px;
-            border-radius: 15px;
-            display: flex;
-            align-items: center;
-            color: white;
-            text-decoration: none;
-            transition: 0.3s;
-        }
-
-        .btn-link:hover {
-            background: rgba(255, 255, 255, 0.2);
-            transform: translateY(-2px);
-            border-color: var(--gold);
-        }
-
-        .btn-link i {
-            font-size: 20px;
-            margin-left: 15px;
-            width: 25px;
-            color: var(--gold);
-        }
-
-        /* نموذج الحجز الاحترافي */
-        .booking-card {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px dashed var(--glass-border);
-            padding: 25px;
-            border-radius: 25px;
-            margin-top: 20px;
-        }
-
-        .booking-card h3 {
-            margin-top: 0;
-            color: var(--gold);
-            font-size: 18px;
-            margin-bottom: 20px;
-        }
-
-        .form-group {
-            margin-bottom: 15px;
-            text-align: right;
-        }
-
-        input, select, textarea {
-            width: 100%;
-            padding: 12px;
-            background: rgba(255, 255, 255, 0.07);
-            border: 1px solid var(--glass-border);
-            border-radius: 10px;
-            color: white;
-            font-size: 14px;
-            box-sizing: border-box;
-            outline: none;
-        }
-
-        input:focus, select:focus {
-            border-color: var(--gold);
-        }
-
-        #submitBtn {
-            width: 100%;
-            padding: 15px;
-            background: var(--gold);
-            color: #0f172a;
-            border: none;
-            border-radius: 10px;
-            font-weight: bold;
-            font-size: 16px;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-
-        #submitBtn:hover {
-            background: #e2bc77;
-            box-shadow: 0 5px 15px rgba(197, 160, 89, 0.4);
-        }
-
-        #successMsg {
-            display: none;
-            background: rgba(34, 197, 94, 0.2);
-            color: #4ade80;
-            padding: 15px;
-            border-radius: 10px;
-            border: 1px solid #4ade80;
-        }
-
-        .footer {
-            margin-top: 40px;
-            font-size: 12px;
-            color: #64748b;
-        }
+        /* نموذج الحجز */
+        .booking-card { background: rgba(255,255,255,0.02); border: 1px dashed rgba(255,255,255,0.2); padding: 20px; border-radius: 20px; }
+        input, select, textarea { width: 100%; padding: 12px; margin-bottom: 10px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; color: white; box-sizing: border-box; outline: none; }
+        #submitBtn { width: 100%; padding: 15px; background: var(--gold); color: var(--dark); border: none; border-radius: 10px; font-weight: bold; cursor: pointer; }
+        .loading { font-style: italic; opacity: 0.7; }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <div class="profile-section">
-        <img src="https://ui-avatars.com/api/?name=NM&background=c5a059&color=fff" alt="Logo" class="profile-img">
-        <h1>مكتب ناصر المانع للعقارات</h1>
-        <p class="subtitle">خدمات عقارية - إدارة أملاك - استشارات</p>
-    </div>
-
-    <div class="links-grid">
-        <a href="tel:+9665XXXXXXXX" class="btn-link">
-            <i class="fas fa-phone-alt"></i>
-            <span>اتصال هاتفي مباشر</span>
-        </a>
-        <a href="https://wa.me/9665XXXXXXXX" class="btn-link">
-            <i class="fab fa-whatsapp"></i>
-            <span>تواصل عبر واتساب</span>
-        </a>
-        <a href="https://goo.gl/maps/..." target="_blank" class="btn-link">
-            <i class="fas fa-map-marker-alt"></i>
-            <span>موقعنا على الخريطة</span>
-        </a>
+    <img src="https://ui-avatars.com/api/?name=NM&background=c5a059&color=fff" class="profile-img">
+    <h2>مكتب ناصر المانع للعقارات</h2>
+    
+    <div id="services-container" class="links-grid">
+        <p class="loading">جاري تحميل أحدث الخدمات...</p>
     </div>
 
     <div class="booking-card">
-        <h3><i class="far fa-calendar-check"></i> احجز موعد معاينة</h3>
+        <h4 style="color:var(--gold)">احجز موعدك الآن</h4>
         <form id="bookingForm">
-            <div class="form-group">
-                <input type="text" name="name" placeholder="الاسم الكامل" required>
-            </div>
-            <div class="form-group">
-                <input type="tel" name="phone" placeholder="رقم الجوال" required>
-            </div>
-            <div class="form-group">
-                <select name="service">
-                    <option value="معاينة عقار">طلب معاينة عقار</option>
-                    <option value="استشارة">استشارة عقارية</option>
-                    <option value="إدارة أملاك">طلب إدارة أملاك</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <textarea name="message" rows="3" placeholder="أي تفاصيل إضافية..."></textarea>
-            </div>
-            <button type="submit" id="submitBtn">تأكيد إرسال الطلب</button>
+            <input type="text" name="name" placeholder="الاسم الكريم" required>
+            <input type="tel" name="phone" placeholder="رقم الجوال" required>
+            <select name="service" id="serviceSelect">
+                <option value="معاينة عامة">اختر نوع الخدمة</option>
+            </select>
+            <button type="submit" id="submitBtn">تأكيد الحجز</button>
         </form>
-        <div id="successMsg">✅ تم استلام طلبك! سنتصل بك قريباً.</div>
-    </div>
-
-    <div class="footer">
-        حقوق النشر © 2026 | صمم بواسطة زُهير
+        <p id="successMsg" style="display:none; color:#4ade80;">✅ تم استلام طلبك بنجاح!</p>
     </div>
 </div>
 
 <script>
-    // استبدل الرابط أدناه برابط Google Script (Web App URL) الذي حصلت عليه
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbzJuht9fY_fK1ShnaIQafuhmcoAnDlqQqNZKgdFfwJPbXBEyiEpd3rQslyO0gcVo3Ve/exec';
-    const form = document.getElementById('bookingForm');
-    const btn = document.getElementById('submitBtn');
-    const success = document.getElementById('successMsg');
+    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxLAx4mUMLBTcjevVIC-DVnyenWmylTuq3UHoJFrgSzutRv3xYrdki8BKy3NT0iBbzQ/exec';
 
+    // 1. جلب الخدمات وعرضها
+    window.onload = () => {
+        fetch(SCRIPT_URL)
+        .then(res => res.json())
+        .then(data => {
+            const container = document.getElementById('services-container');
+            const select = document.getElementById('serviceSelect');
+            container.innerHTML = '';
+            
+            data.forEach(item => {
+                // إضافة زر للموقع
+                container.innerHTML += `
+                    <a href="${item.link || '#'}" class="btn-link">
+                        <i class="fas fa-star"></i>
+                        <div style="text-align:right">
+                            <div style="font-weight:bold">${item.name}</div>
+                            <div style="font-size:11px; opacity:0.6">${item.desc}</div>
+                        </div>
+                    </a>`;
+                // إضافة خيار في نموذج الحجز تلقائياً
+                select.innerHTML += `<option value="${item.name}">${item.name}</option>`;
+            });
+        });
+    };
+
+    // 2. إرسال المواعيد
+    const form = document.getElementById('bookingForm');
     form.addEventListener('submit', e => {
         e.preventDefault();
-        btn.disabled = true;
-        btn.innerText = "جاري الحفظ...";
-
-        fetch(scriptURL, { 
-            method: 'POST', 
-            body: new FormData(form)
-        })
-        .then(response => {
-            console.log('Success!', response);
+        document.getElementById('submitBtn').disabled = true;
+        fetch(SCRIPT_URL, { method: 'POST', body: new FormData(form) })
+        .then(() => {
+            form.reset();
             form.style.display = 'none';
-            success.style.display = 'block';
-        })
-        .catch(error => {
-            console.error('Error!', error.message);
-            btn.disabled = false;
-            btn.innerText = "حاول مرة أخرى";
-            alert("حدث خطأ، يرجى المحاولة لاحقاً");
+            document.getElementById('successMsg').style.display = 'block';
         });
     });
-
-    const getServicesURL = 'رابط_جوجل_سكريبت_الجديد';
-
-function loadServices() {
-    fetch(getServicesURL)
-    .then(res => res.json())
-    .then(data => {
-        const container = document.getElementById('services-container');
-        container.innerHTML = ''; // مسح رسالة التحميل
-
-        data.forEach(service => {
-            container.innerHTML += `
-                <a href="${service.link || '#'}" class="btn-link">
-                    <i class="fas fa-home"></i>
-                    <div style="text-align: right;">
-                        <div style="font-weight: bold;">${service.name}</div>
-                        <div style="font-size: 11px; opacity: 0.7;">${service.desc}</div>
-                    </div>
-                </a>
-            `;
-        });
-    });
-}
-
-// استدعاء الوظيفة عند تشغيل الصفحة
-window.onload = loadServices;
 </script>
 
 </body>
 </html>
-
-<div id="services-container" class="links-grid">
-    <p>جاري تحميل الخدمات...</p>
-</div>
-
-
-
-
