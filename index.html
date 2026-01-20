@@ -12,3 +12,30 @@
 <div id="successMsg" style="display:none; color:gold; margin-top:20px;">
     ✅ تم استلام طلبك بنجاح، سنتصل بك قريباً!
 </div>
+
+
+<script>
+    const scriptURL = 'ضع_رابط_جوجل_هنا_الذي_ينتهي_ب_exec';
+    const form = document.getElementById('bookingForm');
+    const btn = document.getElementById('submitBtn');
+    const msg = document.getElementById('successMsg');
+
+    form.addEventListener('submit', e => {
+        e.preventDefault();
+        btn.disabled = true;
+        btn.innerText = "جاري الإرسال...";
+
+        fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+            .then(response => {
+                form.style.display = 'none';
+                msg.style.display = 'block';
+                console.log('Success!', response);
+            })
+            .catch(error => {
+                btn.disabled = false;
+                btn.innerText = "حاول مرة أخرى";
+                console.error('Error!', error.message);
+            });
+    });
+</script>
+
