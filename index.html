@@ -1,41 +1,243 @@
-<form id="bookingForm">
-    <input type="text" name="name" placeholder="اسمك الكريم" required>
-    <input type="tel" name="phone" placeholder="رقم الجوال" required>
-    <select name="service">
-        <option value="استشارة">استشارة عقارية</option>
-        <option value="معاينة">معاينة وحدة</option>
-    </select>
-    <textarea name="message" placeholder="تفاصيل إضافية"></textarea>
-    <button type="submit" id="submitBtn">تأكيد الحجز الآن</button>
-</form>
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>بطاقة التواصل الذكية | مكتب ناصر المانع</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        /* إعدادات التصميم العام */
+        :root {
+            --gold: #c5a059;
+            --dark-bg: #0f172a;
+            --glass: rgba(255, 255, 255, 0.1);
+            --glass-border: rgba(255, 255, 255, 0.2);
+        }
 
-<div id="successMsg" style="display:none; color:gold; margin-top:20px;">
-    ✅ تم استلام طلبك بنجاح، سنتصل بك قريباً!
+        body {
+            background: radial-gradient(circle at top, #1e293b, #0f172a);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            min-height: 100vh;
+            color: white;
+            padding: 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        /* الهوية البصرية */
+        .profile-section {
+            margin-bottom: 30px;
+        }
+
+        .profile-img {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            border: 3px solid var(--gold);
+            padding: 5px;
+            background: white;
+            box-shadow: 0 0 20px rgba(197, 160, 89, 0.3);
+        }
+
+        h1 { font-size: 24px; margin: 15px 0 5px; }
+        .subtitle { color: #94a3b8; font-size: 15px; }
+
+        /* الأزرار السريعة */
+        .links-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 30px;
+        }
+
+        .btn-link {
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            padding: 15px 20px;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            color: white;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .btn-link:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+            border-color: var(--gold);
+        }
+
+        .btn-link i {
+            font-size: 20px;
+            margin-left: 15px;
+            width: 25px;
+            color: var(--gold);
+        }
+
+        /* نموذج الحجز الاحترافي */
+        .booking-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px dashed var(--glass-border);
+            padding: 25px;
+            border-radius: 25px;
+            margin-top: 20px;
+        }
+
+        .booking-card h3 {
+            margin-top: 0;
+            color: var(--gold);
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+            text-align: right;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 12px;
+            background: rgba(255, 255, 255, 0.07);
+            border: 1px solid var(--glass-border);
+            border-radius: 10px;
+            color: white;
+            font-size: 14px;
+            box-sizing: border-box;
+            outline: none;
+        }
+
+        input:focus, select:focus {
+            border-color: var(--gold);
+        }
+
+        #submitBtn {
+            width: 100%;
+            padding: 15px;
+            background: var(--gold);
+            color: #0f172a;
+            border: none;
+            border-radius: 10px;
+            font-weight: bold;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #submitBtn:hover {
+            background: #e2bc77;
+            box-shadow: 0 5px 15px rgba(197, 160, 89, 0.4);
+        }
+
+        #successMsg {
+            display: none;
+            background: rgba(34, 197, 94, 0.2);
+            color: #4ade80;
+            padding: 15px;
+            border-radius: 10px;
+            border: 1px solid #4ade80;
+        }
+
+        .footer {
+            margin-top: 40px;
+            font-size: 12px;
+            color: #64748b;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="profile-section">
+        <img src="https://ui-avatars.com/api/?name=NM&background=c5a059&color=fff" alt="Logo" class="profile-img">
+        <h1>مكتب ناصر المانع للعقارات</h1>
+        <p class="subtitle">خدمات عقارية - إدارة أملاك - استشارات</p>
+    </div>
+
+    <div class="links-grid">
+        <a href="tel:+9665XXXXXXXX" class="btn-link">
+            <i class="fas fa-phone-alt"></i>
+            <span>اتصال هاتفي مباشر</span>
+        </a>
+        <a href="https://wa.me/9665XXXXXXXX" class="btn-link">
+            <i class="fab fa-whatsapp"></i>
+            <span>تواصل عبر واتساب</span>
+        </a>
+        <a href="https://goo.gl/maps/..." target="_blank" class="btn-link">
+            <i class="fas fa-map-marker-alt"></i>
+            <span>موقعنا على الخريطة</span>
+        </a>
+    </div>
+
+    <div class="booking-card">
+        <h3><i class="far fa-calendar-check"></i> احجز موعد معاينة</h3>
+        <form id="bookingForm">
+            <div class="form-group">
+                <input type="text" name="name" placeholder="الاسم الكامل" required>
+            </div>
+            <div class="form-group">
+                <input type="tel" name="phone" placeholder="رقم الجوال" required>
+            </div>
+            <div class="form-group">
+                <select name="service">
+                    <option value="معاينة عقار">طلب معاينة عقار</option>
+                    <option value="استشارة">استشارة عقارية</option>
+                    <option value="إدارة أملاك">طلب إدارة أملاك</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <textarea name="message" rows="3" placeholder="أي تفاصيل إضافية..."></textarea>
+            </div>
+            <button type="submit" id="submitBtn">تأكيد إرسال الطلب</button>
+        </form>
+        <div id="successMsg">✅ تم استلام طلبك! سنتصل بك قريباً.</div>
+    </div>
+
+    <div class="footer">
+        حقوق النشر © 2026 | صمم بواسطة زُهير
+    </div>
 </div>
 
-
 <script>
-    const scriptURL = 'ضع_رابط_جوجل_هنا_الذي_ينتهي_ب_exec';
+    // استبدل الرابط أدناه برابط Google Script (Web App URL) الذي حصلت عليه
+    const scriptURL = 'ضع_رابط_جوجل_سكريبت_هنا';
     const form = document.getElementById('bookingForm');
     const btn = document.getElementById('submitBtn');
-    const msg = document.getElementById('successMsg');
+    const success = document.getElementById('successMsg');
 
     form.addEventListener('submit', e => {
         e.preventDefault();
         btn.disabled = true;
-        btn.innerText = "جاري الإرسال...";
+        btn.innerText = "جاري الحفظ...";
 
-        fetch(scriptURL, { method: 'POST', body: new FormData(form)})
-            .then(response => {
-                form.style.display = 'none';
-                msg.style.display = 'block';
-                console.log('Success!', response);
-            })
-            .catch(error => {
-                btn.disabled = false;
-                btn.innerText = "حاول مرة أخرى";
-                console.error('Error!', error.message);
-            });
+        fetch(scriptURL, { 
+            method: 'POST', 
+            body: new FormData(form)
+        })
+        .then(response => {
+            console.log('Success!', response);
+            form.style.display = 'none';
+            success.style.display = 'block';
+        })
+        .catch(error => {
+            console.error('Error!', error.message);
+            btn.disabled = false;
+            btn.innerText = "حاول مرة أخرى";
+            alert("حدث خطأ، يرجى المحاولة لاحقاً");
+        });
     });
 </script>
 
+</body>
+</html>
