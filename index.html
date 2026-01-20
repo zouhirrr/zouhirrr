@@ -237,8 +237,41 @@
             alert("حدث خطأ، يرجى المحاولة لاحقاً");
         });
     });
+
+    const getServicesURL = 'رابط_جوجل_سكريبت_الجديد';
+
+function loadServices() {
+    fetch(getServicesURL)
+    .then(res => res.json())
+    .then(data => {
+        const container = document.getElementById('services-container');
+        container.innerHTML = ''; // مسح رسالة التحميل
+
+        data.forEach(service => {
+            container.innerHTML += `
+                <a href="${service.link || '#'}" class="btn-link">
+                    <i class="fas fa-home"></i>
+                    <div style="text-align: right;">
+                        <div style="font-weight: bold;">${service.name}</div>
+                        <div style="font-size: 11px; opacity: 0.7;">${service.desc}</div>
+                    </div>
+                </a>
+            `;
+        });
+    });
+}
+
+// استدعاء الوظيفة عند تشغيل الصفحة
+window.onload = loadServices;
 </script>
 
 </body>
 </html>
+
+<div id="services-container" class="links-grid">
+    <p>جاري تحميل الخدمات...</p>
+</div>
+
+
+
 
